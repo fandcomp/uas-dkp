@@ -18,5 +18,10 @@ jobs:
         with:
           php-version: '8.2'
 
+      - name: Install PHP_CodeSniffer
+        run: composer global require "squizlabs/php_codesniffer=*"
+        env:
+          COMPOSER_NO_INTERACTION: 1
+
       - name: Run phpcs
-        run: phpcs --report-source --report-full
+        run: ~/.composer/vendor/bin/phpcs --report-source --report-full
