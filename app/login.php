@@ -1,16 +1,19 @@
 <?php
 require 'auth.php';
 
-class Profile {
+class Profile
+{
     public $username;
     public $isAdmin = false;
 
-    function __construct($u, $isAdmin = false) {
+    function __construct($u, $isAdmin = false)
+    {
         $this->username = $u;
         $this->isAdmin = $isAdmin;
     }
 
-    function __toString() {
+    function __toString()
+    {
         return "User: {$this->username}, Role: " . ($this->isAdmin ? "Admin" : "User");
     }
 }
@@ -38,12 +41,13 @@ if ($_POST) {
     }
 }
 ?>
-<?php include '_header.php'; ?>
+<?php require '_header.php'; ?>
 <h2>Login</h2>
-<?php if (!empty($error)) echo "<p style='color:red'>$error</p>"; ?>
+<?php if (!empty($error)) { echo "<p style='color:red'>$error</p>";
+} ?>
 <form method="post">
   <label>Username <input name="username"></label>
   <label>Password <input type="password" name="password"></label>
   <button type="submit">Login</button>
 </form>
-<?php include '_footer.php'; ?>
+<?php require '_footer.php'; ?>

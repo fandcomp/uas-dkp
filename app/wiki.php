@@ -1,5 +1,5 @@
-<?php include 'auth.php'; ?>
-<?php include '_header.php'; ?>
+<?php require 'auth.php'; ?>
+<?php require '_header.php'; ?>
 <h2>Wiki Search</h2>
 <form><input name="q"><button>Search</button></form>
 <?php
@@ -14,4 +14,4 @@ if (isset($_GET['q'])) {
     }
 }
 ?>
-<?php include '_footer.php'; ?>
+<?php require '_footer.php'; ?>
