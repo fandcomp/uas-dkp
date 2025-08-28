@@ -24,4 +24,4 @@ jobs:
           COMPOSER_NO_INTERACTION: 1
 
       - name: Run phpcs
-        run: ~/.composer/vendor/bin/phpcs --report-source --report-full
+        run: ~/.composer/vendor/bin/phpcs app/ --report-source --report-full
