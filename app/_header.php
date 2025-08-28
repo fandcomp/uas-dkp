@@ -1,3 +1,7 @@
+<!--
+ * File: _header.php
+ * Description: HTML header and navigation for the app.
+-->
 <!doctype html>
 <html>
 <head>
@@ -8,7 +12,7 @@
 <body>
 <header>
   <h1>Secure Coding Exam Lab</h1>
-  <?php if (isset($_SESSION['user'])): ?>
+  <?php if (isset($_SESSION['user'])) : ?>
     <nav>
       <a href="dashboard.php">Dashboard</a> |
       <a href="profile.php">My Profile</a> |

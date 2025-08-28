@@ -1,5 +1,5 @@
 <?php
-include 'auth.php';
+require 'auth.php';
 
 class Profile {
     public $username;

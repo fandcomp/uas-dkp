@@ -1,13 +1,17 @@
 <?php include 'auth.php'; ?>
-<?php include '_header.php'; ?>
-<h2>Ping Server</h2>
+/**
+ * File: ping.php
+ * Description: Ping server with input validation and output escaping.
+ */
+<?php require 'auth.php'; ?>
+<?php require '_header.php'; ?>
 <form><input name="target"><button>Ping!</button></form>
 <?php
 if (!isset($_GET['target'])) {
     die("Missing parameter.");
 }
     $target = $_GET['target'];
-    // Validasi: hanya izinkan IP/domain sederhana
+    $target = $_GET['target'];
     if (!filter_var($target, FILTER_VALIDATE_IP) && !preg_match('/^[a-zA-Z0-9.-]+$/', $target)) {
         die("Invalid target");
     }
@@ -16,4 +20,4 @@ if (!isset($_GET['target'])) {
     echo "<pre>" . htmlspecialchars($output) . "</pre>";
 
 ?>
-<?php include '_footer.php'; ?>
+<?php require '_footer.php'; ?>

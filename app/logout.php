@@ -1,3 +1,7 @@
+/**
+ * File: logout.php
+ * Description: Logout and destroy session.
+ */
 <?php
 session_start();
 session_destroy();

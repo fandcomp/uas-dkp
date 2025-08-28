@@ -1,5 +1,5 @@
-<?php include 'auth.php'; ?>
-<?php include '_header.php'; ?>
+<?php require 'auth.php'; ?>
+<?php require '_header.php'; ?>
 <h2>Post comments</h2>
 <form method="post">
   <input name="author" placeholder="Name...">
