@@ -19,14 +19,17 @@ if ($_POST) {
     $u = $_POST['username'];
     $p = $_POST['password'];
 
-    $sql = "SELECT * FROM users WHERE username='$u' AND password='$p'";
-    $res = $GLOBALS['PDO']->query($sql);
-    if ($row = $res->fetch()) {
+    $stmt = $GLOBALS['PDO']->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
+    $stmt->execute([$u, $p]);
+    if ($row = $stmt->fetch()) {
         $_SESSION['user'] = $row['username'];
         $_SESSION['role'] = $row['role'];
 
-        $pObj = new Profile($row['username'], $row['role'] === 'admin');
-        setcookie('profile', serialize($pObj));
+        $profileArr = [
+            'username' => $row['username'],
+            'isAdmin' => ($row['role'] === 'admin')
+        ];
+        setcookie('profile', json_encode($profileArr));
 
         header("Location: dashboard.php");
         exit;

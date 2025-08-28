@@ -5,11 +5,12 @@
 <?php
 if (isset($_GET['q'])) {
     $q = $_GET['q'];
-    $sql = "SELECT * FROM articles WHERE title LIKE '%$q%'";
-    echo "<p>Query: $sql</p>";
-    $res = $GLOBALS['PDO']->query($sql);
-    foreach ($res as $row) {
-        echo "<li>{$row['title']}: {$row['body']}</li>";
+    $stmt = $GLOBALS['PDO']->prepare("SELECT * FROM articles WHERE title LIKE ?");
+    $search = "%$q%";
+    $stmt->execute([$search]);
+    echo "<p>Query executed safely.</p>";
+    foreach ($stmt as $row) {
+        echo "<li>" . htmlspecialchars($row['title']) . ": " . htmlspecialchars($row['body']) . "</li>";
     }
 }
 ?>

@@ -3,7 +3,10 @@
 <h2>Crash Test</h2>
 <?php
 $factor = $_GET['factor'] ?? 1;
-$result = 100 / $factor; 
-echo "100 / $factor = $result";
+if (!is_numeric($factor) || $factor == 0) {
+	die("Invalid factor. Must be a non-zero number.");
+}
+$result = 100 / $factor;
+echo "100 / " . htmlspecialchars($factor) . " = " . htmlspecialchars($result);
 ?>
 <?php include '_footer.php'; ?>
